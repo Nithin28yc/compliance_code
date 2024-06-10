@@ -1,0 +1,60 @@
+def label = "mypod-${UUID.randomUUID().toString()}"
+def serviceaccount = "jenkins-admin"
+podTemplate(label: label, serviceAccount: serviceaccount, containers: [
+    containerTemplate(name: 'kubectl', image: 'smesch/kubectl', ttyEnabled: true, command: 'cat',
+                             volumes: [secretVolume(secretName: 'kube-config', mountPath: '/root/.kube')]),						
+    containerTemplate(name: 'docker', image: 'docker:1.11', ttyEnabled: true, command: 'cat'),
+	containerTemplate(name: 'clair-scanner', image: 'cplee/clair-scanner', ttyEnabled: true, command: 'cat',
+							 volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]),
+	containerTemplate(name: 'alpine', image: 'alpine:3.5', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'jmeter', image: 'floodio/jmeter:5.0', ttyEnabled: true, command: 'cat'),
+	containerTemplate(name: 'nmap', image: 'uzyexe/nmap', ttyEnabled: true, slaveConnectTimeout:300, command: 'cat'),
+    containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:latest', args: '${computer.jnlpmac} ${computer.name}'),
+    containerTemplate(name: 'zap', image: 'owasp/zap2docker-stable', privileged: true, ttyEnabled: true, command: 'cat')],
+    volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')] 
+      ) {
+
+    node(label) {
+	def GIT_URL= 'https://innersource.accenture.com/scm/ethan/ct_complianceascode.git'
+
+	def CREDENTIAL_ID = 'nithinyc'
+    
+    def GITLAB_BRANCH = 'nithinNew'
+    def REPO = 'ct_complianceascode'
+    
+  library identifier: "test@$GITLAB_BRANCH", retriever: modernSCM([$class: 'GitSCMSource',remote: "$GIT_URL",credentialsId: "$CREDENTIAL_ID"]) 
+  
+  
+  git_checkout(repo: "${REPO}")
+  
+ //############################Functional stages###############################
+  
+  //*******************maven***********************************       
+
+     Notice_Privacy()     
+
+     Notice_CookieContentValidation()
+
+     Notice_DataTransferAggrement()
+
+     PasswordManagement_PasswordComplexity()
+
+     PasswordManagement_UnrestrictedInputlength()
+
+     PasswordManagement_PasswordHistoryPolicy()
+
+     PasswordManagement_VerifyPasswordEncryption()
+
+     Authorization_RoleBasedPermission()
+
+     Authentication_SessionTimeOut()
+
+     DataAtRestAndTransit_SSLLabs()
+
+     DataAtRestAndTransit_TransmissionEncryptionOfData()
+
+ }
+
+    
+    }

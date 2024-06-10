@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="password" value="bGgrwYo1O2lLOpa782"/>
+    <parameter name="appURL" value="https://caccontrolcheck.continuoustestplatform.com"/>
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="username" value="ethanadmin"/>
+    <classes>
+      <class name="compliance.Functional.ErrorHandlingInvalidParameter">
+        <methods>
+          <include name="ErrorHandling_InvalidParameterCheck"/>
+          <include name="startReport"/>
+          <include name="register"/>
+          <include name="endReport"/>
+          <include name="setPlatformType"/>
+          <include name="endDriver"/>
+          <include name="getResult"/>
+          <include name="initSetUp"/>
+        </methods>
+      </class> <!-- compliance.Functional.ErrorHandlingInvalidParameter -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
