@@ -41,7 +41,7 @@ public class TestingMFA extends testBase{
 	public void Multi_Factor_Authentication() throws InterruptedException, IOException {
 		CommonMethods commonMethods = PageFactory.initElements(driver, CommonMethods.class);
 		Testing_MFA mfa = PageFactory.initElements(driver, Testing_MFA.class);
-		boolean flag = mfa.verify_MFA(testBase.getEnterpriseID(), testBase.getEnterprisePassword());
+		boolean flag = mfa.verify_MFA(testBase.getUsername(), testBase.getPassword());
 		Assert.assertTrue(flag);
 	}
 	

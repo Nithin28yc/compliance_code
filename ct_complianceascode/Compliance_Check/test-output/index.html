@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-skipped">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
-                    <span>C:\Users\nithin.y.c\OneDrive - Accenture\Documents\comp\nithinNew\ct_complianceascode\Compliance_Check\Invalid_Parameter.xml</span>
+                    <span>C:\Users\nithin.y.c\OneDrive - Accenture\Documents\comp\cac_smapleapp\ct_complianceascode\Compliance_Check\SslLabs_AWS.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,  1 skipped,  </span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods skipped suite-Suite"> (hide)</a> <!-- hide-methods skipped suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods skipped suite-Suite"> (show)</a> <!-- show-methods skipped suite-Suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
                     </span>
-                    <div class="method-list-content skipped suite-Suite">
+                    <div class="method-list-content failed suite-Suite">
                       <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="compliance.Functional.ErrorHandlingInvalidParameter" class="method navigator-link" hash-for-method="ErrorHandling_InvalidParameterCheck">ErrorHandling_InvalidParameterCheck</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="compliance.Functional.SSLLABS_AWS" class="method navigator-link" hash-for-method="SSLUrlSearch">SSLUrlSearch</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content skipped suite-Suite -->
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,81 +117,30 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-skipped">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
-              <span class="class-name">compliance.Functional.ErrorHandlingInvalidParameter</span>
+              <img src="failed.png"/>
+              <span class="class-name">compliance.Functional.SSLLABS_AWS</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="ErrorHandling_InvalidParameterCheck">
-                  </a> <!-- ErrorHandling_InvalidParameterCheck -->
-                  <span class="method-name">ErrorHandling_InvalidParameterCheck</span>
-                  <div class="stack-trace">org.openqa.selenium.WebDriverException: unknown error: Chrome failed to start: crashed.
-  (unknown error: DevToolsActivePort file doesn&apos;t exist)
-  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;BDC14-L-F27H460&apos;, ip: &apos;10.0.7.198&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: driver.version: ChromeDriver
-remote stacktrace: Backtrace:
-	(No symbol) [0x00E86643]
-	(No symbol) [0x00E1BE21]
-	(No symbol) [0x00D1DA9D]
-	(No symbol) [0x00D3F2A7]
-	(No symbol) [0x00D3A899]
-	(No symbol) [0x00D76917]
-	(No symbol) [0x00D7655C]
-	(No symbol) [0x00D6FB76]
-	(No symbol) [0x00D449C1]
-	(No symbol) [0x00D45E5D]
-	GetHandleVerifier [0x010FA142+2497106]
-	GetHandleVerifier [0x011285D3+2686691]
-	GetHandleVerifier [0x0112BB9C+2700460]
-	GetHandleVerifier [0x00F33B10+635936]
-	(No symbol) [0x00E24A1F]
-	(No symbol) [0x00E2A418]
-	(No symbol) [0x00E2A505]
-	(No symbol) [0x00E3508B]
-	BaseThreadInitThunk [0x75F36BD9+25]
-	RtlGetFullPathName_UEx [0x770E8FD2+1218]
-	RtlGetFullPathName_UEx [0x770E8F9D+1165]
-
-	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$errorHandler$0(W3CHandshakeResponse.java:62)
-	at org.openqa.selenium.remote.HandshakeResponse.lambda$getResponseFunction$0(HandshakeResponse.java:30)
-	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:126)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:1002)
-	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
-	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:647)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:128)
-	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:74)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:213)
-	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:131)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:181)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:168)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:157)
-	at Generic.TestBase.BrowserConfig.setDriver(BrowserConfig.java:49)
-	at compliance.Functional.ErrorHandlingInvalidParameter.initSetUp(ErrorHandlingInvalidParameter.java:29)
+                  <a name="SSLUrlSearch">
+                  </a> <!-- SSLUrlSearch -->
+                  <span class="method-name">SSLUrlSearch</span>
+                  <div class="stack-trace">java.lang.AssertionError: did not expect to find [true] but found [false]
+	at compliance.Functional.SSLLABS_AWS.SSLUrlSearch(SSLLABS_AWS.java:50)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 30 stack frames
+... Removed 31 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-skipped -->
+          </div> <!-- suite-Suite-class-failed -->
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\nithin.y.c\OneDrive - Accenture\Documents\comp\nithinNew\ct_complianceascode\Compliance_Check\Invalid_Parameter.xml</span>
+            <span class="header-content">C:\Users\nithin.y.c\OneDrive - Accenture\Documents\comp\cac_smapleapp\ct_complianceascode\Compliance_Check\SslLabs_AWS.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -199,12 +148,11 @@ remote stacktrace: Backtrace:
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
-    &lt;parameter name=&quot;password&quot; value=&quot;bGgrwYo1O2lLOpa782&quot;/&gt;
-    &lt;parameter name=&quot;appURL&quot; value=&quot;https://caccontrolcheck.continuoustestplatform.com&quot;/&gt;
+    &lt;parameter name=&quot;scanurl&quot; value=&quot;http://a9fc52773cf3a424888698fe37b88eb0-2021981989.us-east-2.elb.amazonaws.com&quot;/&gt;
+    &lt;parameter name=&quot;appURL&quot; value=&quot;https://www.ssllabs.com/ssltest&quot;/&gt;
     &lt;parameter name=&quot;browserType&quot; value=&quot;chrome&quot;/&gt;
-    &lt;parameter name=&quot;username&quot; value=&quot;ethanadmin&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;compliance.Functional.ErrorHandlingInvalidParameter&quot;/&gt;
+      &lt;class name=&quot;compliance.Functional.SSLLABS_AWS&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -246,14 +194,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ErrorHandling_InvalidParameterCheck')
-data.setCell(0, 2, 'compliance.Functional.ErrorHandlingInvalidParameter')
-data.setCell(0, 3, 0);
+data.setCell(0, 1, 'SSLUrlSearch')
+data.setCell(0, 2, 'compliance.Functional.SSLLABS_AWS')
+data.setCell(0, 3, 59902);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 59 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -279,40 +227,40 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">compliance.Functional.ErrorHandlingInvalidParameter</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">compliance.Functional.SSLLABS_AWS</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">startReport(chrome, NA)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-class before">
-                <span class="method-name">setPlatformType(chrome, https://caccontrolcheck.continuoustestplatform.com, ethanadmin, bGgrwYo1O2lLOpa782, NA, NA, ...)</span>
-                <span class="method-start">6281 ms</span>
+                <span class="method-name">setPlatformType(chrome, https://www.ssllabs.com/ssltest, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...)</span>
+                <span class="method-start">5929 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">initSetUp</span>
-                <span class="method-start">6296 ms</span>
+                <span class="method-start">5943 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">register</span>
-                <span class="method-start">21761 ms</span>
+                <span class="method-name">register(public void compliance.Functional.SSLLABS_AWS.SSLUrlSearch() throws java.lang.InterruptedException,j...)</span>
+                <span class="method-start">31076 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">ErrorHandling_InvalidParameterCheck</span>
-                <span class="method-start">21773 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">SSLUrlSearch</span>
+                <span class="method-start">31103 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">getResult</span>
-                <span class="method-start">21794 ms</span>
+                <span class="method-name">getResult([TestResult name=SSLUrlSearch status=FAILURE method=SSLLABS_AWS.SSLUrlSearch()[pri:0, instance:compl...)</span>
+                <span class="method-start">91019 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">endDriver</span>
-                <span class="method-start">21802 ms</span>
+                <span class="method-start">91919 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-test after">
                 <span class="method-name">endReport</span>
-                <span class="method-start">21816 ms</span>
+                <span class="method-start">91928 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

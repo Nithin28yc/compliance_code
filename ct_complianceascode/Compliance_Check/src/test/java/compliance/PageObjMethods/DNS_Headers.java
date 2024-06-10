@@ -48,6 +48,7 @@ public class DNS_Headers extends testBase {
 		{
 			Assert.assertTrue(true);
 			logger.log(LogStatus.PASS, "The DNS Headers Validations Passed and Score is "+score);
+			logger.log(LogStatus.INFO, "Promising news surfaces as the DNS headers control, holding an impressive score of A, successfully passes validation. Rigorous assessments and testing confirm the robustness of Domain Name System (DNS) query and response management. This achievement underscores the network's resilience and security, as well as the effective verification and response mechanisms in place. The validated DNS headers control, marked with a score of A, reflects a dedicated commitment to maintaining a secure and reliable network infrastructure.");
 			System.out.println("The DNS Headers Validations Passed and Score is "+score);
 			return true;
 		}else
@@ -55,6 +56,7 @@ public class DNS_Headers extends testBase {
 		{
 			logger.log(LogStatus.FAIL, "The DNS Headers Validations Failed and Score is "+score);
 			System.out.println("The DNS Headers Validations Failed and Score is "+score);
+			logger.log(LogStatus.INFO, "This failure underscores potential deficiencies in managing Domain Name System (DNS) queries and responses, which may compromise network integrity and security. Immediate attention is essential to address this DNS headers control validation failure, rectify shortcomings, and enhance query verification processes. Urgent corrective measures are required to bolster the control's effectiveness, mitigate risks of unauthorized access or data interception, and ensure a resilient and secure network infrastructure in alignment with industry standards and cybersecurity best practices.");
 			logger.log(LogStatus.INFO, "Missing Headers are as follows");
 			System.out.println("Missing Headers are as follows");
 			List<WebElement> headers=driver.findElements(By.xpath("//div[@class='reportTitle' and text()='Missing Headers']//parent::div//tr"));

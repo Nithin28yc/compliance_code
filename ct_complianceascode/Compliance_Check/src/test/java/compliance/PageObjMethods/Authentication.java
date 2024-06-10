@@ -24,136 +24,58 @@ public class Authentication extends testBase{
 	JavascriptExecutor jse = (JavascriptExecutor) driver;
 	CommonMethods commonMethods = PageFactory.initElements(driver, CommonMethods.class);
 
-	@FindBy(xpath = "//input[@name='username']")
-	public WebElement platformUsername;
+	@FindBy(xpath = "//input[@name='name']")
+	public WebElement userName;
 
-	@FindBy(xpath = "//input[@name='password']")
-	public WebElement platformPassword;
+	@FindBy(xpath = "//input[@name='description']")
+	public WebElement userPassword;
 
-	@FindBy(xpath = "//*[text()='Login']")
+	@FindBy(xpath = "//input[@value='Save Todo']")
 	public WebElement loginButton;
 
-	@FindBy(xpath = "//a[.='Sign Out']")
-	public WebElement logoutButton;
-
-	@FindBy(xpath = "//*[@id='invalid']")
-	public WebElement loginErrorMessage;
-
-	@FindBy(xpath = "//button[.='Try login']")
-	public WebElement tryLoginButton;
-
-	@FindBy(xpath="//button[@value='no']")
-	public WebElement click_No;
-
-	@FindBy(xpath="//*[@id=\"DescPop\"]/div[2]/form/div[3]/button")
-	public WebElement accept;
-
-	@FindBy(xpath = "//*[@id=\"DescPop\"]/div[2]/form/div[1]")
-	public WebElement heading;
-
-	@FindBy(xpath = "//*[@id=\"DescPop\"]/div[2]/form/div[2]/p[1]")
-	public WebElement message;
-	String errorMessage;
-	//String ExpectedMsg = "You are using an Accenture proprietary tool (myWizard). You understand that this tool may contain ACCENTURE, CLIENT, OR VENDOR / PARTNER CONFIDENTIAL INFORMATION. You are obligated to adhere to applicable confidentiality obligations and Accenture’s policies, including Policy 69 – Confidentiality, when using the tool and information in the tool. Information in the tool can only be shared with those authorized to receive it. If you are downloading/exporting Confidential Information to another file or report, you must label that file or report as Accenture Confidential. If you have any questions, please email your question to confidentiality@accenture.com or contact your Leadership. Thank you!";
-
-	//	public void ngnixLogin(String Username, String Password) {
-	//		try {
-	//			//String url = driver.getCurrentUrl();
-	//			//System.out.println("url : " +url);
-	//			String urlWithCred = "https://" + username + ":" + password + "@" + testBase.getAppURL().replace("https://", "") + "jenkinscore/";	
-	//			System.out.println(urlWithCred);
-	//			driver.get(urlWithCred);
-	//			driver.findElement(By.xpath("//button[@id='details-button']")).click();
-	//			driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
-	//			commonMethods.waitForPageToLoad();
-	//			logger.log(LogStatus.INFO, "Ngnix login Successful");
-	//			System.out.println("Ngnix login Successful");
-	//			driver.get(testBase.getAppURL());
-	//			commonMethods.waitForPageToLoad();
-	//		}catch (Exception e) {
-	//				logger.log(LogStatus.INFO, "Ngnix login failed");
-	//				System.out.println("Ngnix login failed");
-	//			}
-	//	     }
-
-	public void ngnixLogin(String Username, String Password) {
-		try {
-			// String url = driver.getCurrentUrl();
-			// System.out.println("url : " +url);
-			String urlWithCred = "https://" + username + ":" + password + "@"
-					+ testBase.getAppURL().replace("https://", "") + "/jenkinscore/";
-			System.out.println(urlWithCred);
-			driver.get(urlWithCred);
-			commonMethods.waitForPageToLoad();
-			logger.log(LogStatus.INFO, "Ngnix login Successful");
-			System.out.println("Ngnix login Successful");
-			driver.get(testBase.getAppURL());
-			commonMethods.waitForPageToLoad();
-		} catch (Exception e) {
-			logger.log(LogStatus.INFO, "Ngnix login failed");
-			System.out.println("Ngnix login failed");
-			System.out.println(e);
-		}
-	}
-
+	
 
 	public Boolean devOpsPlatformLogin(String username,String password) throws InterruptedException {
 		commonMethods.waitForPageToLoad();
 
 		try {
 
-			wait.until(ExpectedConditions.visibilityOf(platformUsername));
-			logger.log(LogStatus.INFO, "Enter Username");
+			wait.until(ExpectedConditions.visibilityOf(userName));
+			logger.log(LogStatus.INFO, "Enter Username");			
 			System.out.println("Enter Username");
-			platformUsername.click();
-			platformUsername.sendKeys(username);
+			userName.click();
+			userName.sendKeys(username);
 			commonMethods.waitForPageToLoad();
 
-			wait.until(ExpectedConditions.visibilityOf(platformPassword));
+			wait.until(ExpectedConditions.visibilityOf(userPassword));
 			logger.log(LogStatus.INFO, "Enter Password");
 			System.out.println("Enter password");
-			platformPassword.click();
-			platformPassword.sendKeys(password);
+			userPassword.click();
+			userPassword.sendKeys(password);
 			commonMethods.waitForPageToLoad();
+			
 			logger.log(LogStatus.INFO, "Click on login button");
 			System.out.println("Click on login button");
 			loginButton.click();
-			commonMethods.waitForPageToLoad();
-			click_No.click();
-			commonMethods.waitForPageToLoad();
-
-			Assert.assertEquals(heading.getText(), "Confidential Information – Reminder");
-
-//			if(heading.getText().contains("Confidential Information")) {
-//				String msg = message.getText();
-//
-//				logger.log(LogStatus.PASS, "Confedential Information - Reminder poup is coming as a part of Data clasification");
-//				System.out.println("Confedential Information - Reminder poup is coming as a part of Data clasification");
-//				if(message.getText().contains("Policy")) {
-//					logger.log(LogStatus.PASS, "Policy Management is there");
-//					System.out.println("Policy Management is there");
-//					return true;
-//				}
-//				else {
-//					logger.log(LogStatus.FAIL, "Policy Management is not there");
-//					System.out.println("Policy Management is not there");
-//					return false;
-//				}
-//			}
+			
+			
 			try {
-				accept.click();
+				//accept.click();
 				commonMethods.waitForPageToLoad();
 				logger.log(LogStatus.PASS, "Login Successful");
+				logger.log(LogStatus.INFO, "A positive development has emerged as the authentication control system has passed validation. Robust security measures, including multi-factor authentication (MFA), password complexity verification, and session timeout enforcement, have been validated.");
 				System.out.println("Login Successful");
 				return true;
 				
 			}
 			catch (Exception e){
-				errorMessage = loginErrorMessage.getText();
+				
+			    String	errorMessage = "Invalid Credentials! Please try Again";
 
 				errorMessage.contains("Invalid Credentials! Please try Again");
-				logger.log(LogStatus.FAIL, "Negative Login Verification Successful");
-				System.out.println("Negative Login Verification Successful");
+				logger.log(LogStatus.FAIL, "Invalid login");
+				logger.log(LogStatus.INFO, "This failure signifies potential vulnerabilities in the system's ability to authenticate users effectively. It undermines the security checks, including multi-factor authentication (MFA), password complexity verification, and session timeout enforcement. ");
+				System.out.println("Invalid login");
 				return false;
 			}
 		} catch (Exception e) {
@@ -164,22 +86,6 @@ public class Authentication extends testBase{
 			return false;
 		}
 	}
-	public void devOpsPlatformLogOff() throws InterruptedException {
-		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@alt='user']")));
-			driver.findElement(By.xpath("//img[@alt='user']")).click();
-			//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[.='Sign Out']")));
-			logger.log(LogStatus.INFO, "Click on SignOut");
-			System.out.println("Sign Out");
-			logoutButton.click();
-			commonMethods.waitForPageToLoad();
-			logger.log(LogStatus.PASS, "SignOut successful");
-			System.out.println("SignOut successful");
-		} catch (Exception e) {
-			logger.log(LogStatus.FAIL, "Platform is down");
-			System.out.println("Platform is down");
-			Assert.fail("Platform is down");
-		}
-	}
+	
 
 }

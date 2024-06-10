@@ -32,11 +32,11 @@ public class SslLabs_AWS extends testBase {
 	@FindBy(xpath = "//a[contains(text(),'Clear cache')]")
 	public WebElement clear;
 
+	@FindBy(xpath = "//*[@id='multiTable']/tbody/tr[3]/td[2]/span[3]")
+	public WebElement server;
+	
 	@FindBy(xpath = "//a[contains(text(),'Ignore Certificate Mismatch ')]")
 	public WebElement ignorecertificate;
-
-	@FindBy(xpath = "//*[@id=\"multiTable\"]/tbody/tr[1]/th[2]")
-	public WebElement server;
 
 	@FindBy(xpath = "//table[@id='multiTable']/tbody/tr[3]/td[2]/span[1]")
 	public WebElement firstlink;
@@ -65,12 +65,12 @@ public class SslLabs_AWS extends testBase {
 	@FindBy(xpath = "//span[contains(text(),'Ready')]")
 	public WebElement Ready;
 
-	public boolean searchAllurl(String URL) throws InterruptedException {
+	public boolean searchAllurl(String scanurl) throws InterruptedException {
 		//		commonMethods.waitForPageToLoad();
 		logger.log(LogStatus.INFO, "Passing the url for ssl scan");
 		System.out.println("Passing the url for ssl scan");	
 		searchtab.click();
-		searchtab.sendKeys(URL);
+		searchtab.sendKeys(scanurl);
 
 		logger.log(LogStatus.INFO, "Clicking on submit button");
 		System.out.println("Clicking on submit button");
@@ -98,11 +98,18 @@ public class SslLabs_AWS extends testBase {
 				if (TLSVersion.getText().equals("TLS 1.2")) {
 					if (TLSyes.getText().equals("Yes")) {
 						logger.log(LogStatus.PASS, "The TLS Version is :" + TLSVersion.getText() + " which is as expected.");
+						logger.log(LogStatus.INFO, "Rigorous assessments confirm the SSL implementation's effectiveness in safeguarding data transmission and protecting against potential vulnerabilities.");
+						logger.log(LogStatus.INFO, "The successful validation of the SSL control underscores a steadfast commitment to data security and adherence to industry standards. Continued vigilance, regular monitoring, and periodic assessments are recommended to sustain this validation outcome, ensuring ongoing protection against potential threats and maintaining a secure online environment aligned with cybersecurity best practices.");
+						logger.log(LogStatus.INFO, "Confirming the implementation of Perfect Forward Secrecy (PFS) in conjunction with TLS 1.2 to enhance data protection against potential key compromise.");
 						System.out.println("The TLS Version is :" + TLSVersion.getText() + " which is as expected.");
 						return true;
 					}
 					else {
 						logger.log(LogStatus.FAIL, "TLS Version is not as expected");
+						logger.log(LogStatus.INFO, "A critical situation unfolds as the SSL (Secure Sockets Layer) control fails validation, unveiling vulnerabilities within the SSL implementation. This failure raises concerns about potential data breaches and inadequate security measures.");
+						logger.log(LogStatus.INFO, "Confirming that secure SSL/TLS protocol versions are in use, avoiding vulnerabilities associated with outdated or insecure protocols. Verifying SSL/TLS configurations align with industry best practices, including disabling weak ciphers and enforcing secure protocols");
+						logger.log(LogStatus.INFO, "Verifying that SSL certificates are not expired, avoiding disruptions in secure communication due to outdated certificates.");
+						logger.log(LogStatus.INFO, "Checking for correct HTTP Strict Transport Security (HSTS) header implementation to ensure consistent HTTPS usage and prevent downgrade attacks");
 						System.out.println("TLS Version is not as expected");
 						return false;
 					}
@@ -115,8 +122,8 @@ public class SslLabs_AWS extends testBase {
 
 			catch(Exception e) {
 				System.out.println(e);
-				logger.log(LogStatus.FAIL, "The ips are not loaded");
-				System.out.println("The ips are not loaded");
+				logger.log(LogStatus.FAIL, "No secure protocols supported- - the server responded with plain-text HTTP on HTTPS port");
+				System.out.println("No secure protocols supported- - the server responded with plain-text HTTP on HTTPS port");
 				return false;
 			}
 		}

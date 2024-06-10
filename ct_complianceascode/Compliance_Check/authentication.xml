@@ -3,7 +3,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-  <parameter name="browserType" value="chrome" />
+<parameter name="browserType" value="chrome" />
 
     <classes>
       <class name="compliance.Functional.Authentication_test"/>

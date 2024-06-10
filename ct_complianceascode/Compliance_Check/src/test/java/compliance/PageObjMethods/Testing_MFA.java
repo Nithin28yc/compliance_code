@@ -22,90 +22,52 @@ public class Testing_MFA extends testBase{
 	JavascriptExecutor jse = (JavascriptExecutor) driver;
 	CommonMethods commonMethods = PageFactory.initElements(driver, CommonMethods.class);
 
-	@FindBy(xpath = "//div[text()='Sign in']")
-	public WebElement word;
+	@FindBy(xpath = "//input[@name='name']")
+	public WebElement userName;
 
-	@FindBy(xpath = "//*[@id=\"i0116\"]")
-	public WebElement enterpriseId;
+	@FindBy(xpath = "//input[@name='description']")
+	public WebElement passWord;
 
-	@FindBy(xpath = "//*[@id=\"idSIButton9\"]")
-	public WebElement next;
+	@FindBy(xpath = "//input[@value='Save Todo']")
+	public WebElement loginButton;
 
-	@FindBy(xpath = "//*[@id=\"i0118\"]")
-	public WebElement enterprisePass;
-
-	@FindBy(id ="idSIButton9")
-	public WebElement signIn;
-
-	@FindBy(id ="passwordError")
-	public WebElement passErr;
-
-	@FindBy(xpath = "//*[@id=\"idDiv_SAOTCAS_Title\"]")
-	public WebElement text;
-
-	@FindBy(xpath = "//a[@id='signInAnotherWay']")
-	public WebElement signOtherWay;
-
-	@FindBy(xpath = "//*[@id=\"idDiv_SAOTCS_Proofs\"]/div[4]/div/div/div[2]/div")
-	public WebElement call;
-
-	@FindBy(xpath = "//*[@id=\"mywprivacy\"]/div/h6")
-	public WebElement cookieheading;
-
-	public boolean verify_MFA(String enterpriseID, String enterprisePassword) throws InterruptedException{
-		SoftAssert softassert = new SoftAssert();
+	
+	public boolean verify_MFA(String username,String password) throws InterruptedException {
+		commonMethods.waitForPageToLoad();
 		try {
-			wait.until(ExpectedConditions.visibilityOf(enterpriseId));
-			softassert.assertEquals(word.getText(), "Sign in");
-			logger.log(LogStatus.INFO, "Entering the Enterprise Id");
-			System.out.println("Entering the Enterprise Id");
-			enterpriseId.sendKeys(enterpriseID);
+
+			wait.until(ExpectedConditions.visibilityOf(userName));
+			logger.log(LogStatus.INFO, "Enter Username");
+			System.out.println("Enter Username");
+			userName.click();
+			userName.sendKeys(username);
 			commonMethods.waitForPageToLoad();
-			next.click();
 
-			wait.until(ExpectedConditions.visibilityOf(enterprisePass));			
-			logger.log(LogStatus.INFO, "Entering the Enterprise password");
-			System.out.println("Entering the Enterprise password");
-			enterprisePass.sendKeys(enterprisePassword);
+			wait.until(ExpectedConditions.visibilityOf(passWord));
+			logger.log(LogStatus.INFO, "Enter Password");
+			System.out.println("Enter password");
+			passWord.click();
+			passWord.sendKeys(password);
 			commonMethods.waitForPageToLoad();
-			System.out.println("Clicking on SignIn button");
-			signIn.click();
+			
+			loginButton.click();
 			commonMethods.waitForPageToLoad();
-			wait.until(ExpectedConditions.visibilityOf(text));
-			//				if(code.getText().equals("Enter code")) {
-			try {
-				if(text.getText().contains("Approve sign in request")) {
-//					wait.until(ExpectedConditions.visibilityOf(signOtherWay));
-//					logger.log(LogStatus.INFO, "Clicking on SignIn another way");
-//					System.out.println("Clicking on SignIn another way");
-//					signOtherWay.click();
-//					commonMethods.waitForPageToLoad();
-
-					logger.log(LogStatus.INFO, "Authenticator needs a approve code from the mobile");
-					System.out.println("Authenticator needs a approve code from the mobile");
-
-					logger.log(LogStatus.FAIL, "MFA has not been approved by user");
-					System.out.println("MFA has not been approved by user");
-					return false;
-				}
-				else {
-					logger.log(LogStatus.FAIL, "Multifactor authentication is not been implemented");
-					System.out.println("Multifactor authentication is not been implemented");
-					return false;
-				}
-			}
-			catch(Exception e) {
-				logger.log(LogStatus.FAIL, "Multifactor authentication is not been implemented");
-				System.out.println("Multifactor authentication is not been implemented");
-				return false;
-			}
-
+			
+			logger.log(LogStatus.FAIL, "Multifactor authentication is not been implemented");
+			System.out.println("Multifactor authentication is not been implemented");
+			logger.log(LogStatus.INFO, "A critical situation arises as the Multi-Factor Authentication (MFA) control fails validation. Rigorous assessments reveal deficiencies in the MFA system's ability to enhance user authentication through multiple verification layers. This failure raises concerns about potential vulnerabilities, increasing the risk of unauthorized access and compromising security.");
+			logger.log(LogStatus.INFO, "Ensuring that the chosen authentication factors (password, token, biometric) meet security standards and are correctly implemented.");
+			logger.log(LogStatus.INFO, "Verifying that MFA is consistently enforced for all relevant user accounts and access points, preventing any potential bypass.");
 		}
+			
+	
 		catch (Exception e) {
 			logger.log(LogStatus.FAIL, "Please provide proper credenials to check MFA");
 			System.out.println("Please provide proper credenials to check MFA");
 			System.out.println(e);
 			return false;
 		}
+		return false;
+		}
 	}
-}
+

@@ -59,12 +59,12 @@ public class SslLabs_AzureGCP extends testBase {
 	@FindBy(xpath = "//span[contains(text(),'Ready')]")
 	public WebElement Ready;
 
-	public boolean searchAllurl(String URL) throws InterruptedException {
+	public boolean searchAllurl(String scanurl) throws InterruptedException {
 		//		commonMethods.waitForPageToLoad();
 		logger.log(LogStatus.INFO, "Passing the url for ssl scan");
 		System.out.println("Passing the url for ssl scan");	
 		searchtab.click();
-		searchtab.sendKeys(URL);
+		searchtab.sendKeys(scanurl);
 
 		logger.log(LogStatus.INFO, "Clicking on submit button");
 		System.out.println("Clicking on submit button");

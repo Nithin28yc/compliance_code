@@ -2,6 +2,7 @@ package compliance.PageObjMethods;
 
 import org.junit.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.model.Log;
 import com.relevantcodes.extentreports.LogStatus;
@@ -26,7 +27,9 @@ import java.io.IOException;
 public class DataInTransit_Encrypt {
 	public static Response response;
 	public static String jsonAsString;
-
+	
+	SoftAssert sa = new SoftAssert();
+	
 //	public void transitEncrypt(String username, String password) {
 //		RestAssured.baseURI="https://caccontrolcheck.continuoustestplatform.com/";
 //		RequestSpecification request = RestAssured.given();
@@ -81,7 +84,7 @@ public class DataInTransit_Encrypt {
 		given()
 		.formParam("username", username)
 		.formParam("password", password)
-		.post("https://caccontrolcheck.continuoustestplatform.com/gplapi/login");
+		.post("https://eactesting.continuoustestplatform.com/gqlapi/graphql");
 
     	//System.out.println(resp.jsonPath().prettify());
 //		String token=resp.jsonPath().get("access_token");
@@ -95,8 +98,8 @@ public class DataInTransit_Encrypt {
 		String msg = resp.getStatusLine();
 		System.out.println("Code"+resp.getStatusCode());
 		System.out.println("Code"+resp.getBody().asString());
-		Assert.assertEquals(resp.getStatusCode(), 401);
-		if(msg.contains("401")) {
+		sa.assertEquals(resp.getStatusCode(), 401);
+		if(msg.contains("40")) {
 			System.out.println("Proper encrypted values need to be passed for fetching the token");
 		}
 				

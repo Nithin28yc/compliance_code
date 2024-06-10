@@ -12,7 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class Screenhshot extends testBase{
+public class Screenshot extends testBase{
 	static int sequence = 1;
 	static WebDriver driver=BrowserConfig.getDriver();
 

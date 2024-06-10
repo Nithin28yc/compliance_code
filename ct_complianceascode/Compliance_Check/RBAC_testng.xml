@@ -5,6 +5,7 @@
   <test thread-count="5" name="Test">
   
   <parameter name="browserType" value="chrome" />
+  
  
     <classes>
       <class name="compliance.Functional.roleBasedAccess"/>

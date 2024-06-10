@@ -2,6 +2,8 @@ package Generic.TestBase;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Driver;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +16,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 //adding crossbrowser change, testng name 
 public class BrowserConfig extends testBase{
 	public static WebDriver driver;
+	
 	static String driverPath = "./Drivers_Jars";
 	
 	
@@ -35,18 +38,14 @@ public class BrowserConfig extends testBase{
 			{
 				//local run
 				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--disable-notifications");
-				
-//				prefs = {"download.default_directory" : "C:\Tutorial\down"};
-//				options.add_experimental_option("prefs",prefs);
-//				driver = webdriver.Chrome(executable_path='./chromedriver',chrome_options=options);
-				
 				System.out.println("testing chrome locally");
 				System.out.println("Launching google chrome..");
 				
 				System.setProperty("webdriver.chrome.driver", driverPath+"/chromedriver.exe");
-
-				driver=new ChromeDriver(options);
+				
+				driver = new ChromeDriver(options);
 				driver.manage().window().maximize();
 				driver.navigate().to(appURL);
 				break;
@@ -55,27 +54,31 @@ public class BrowserConfig extends testBase{
 			
 			else
 			{
-				 //Jenkins run on platform
-		           System.out.println("testing chrome through desired capabilities");
-					DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-					System.out.println("capabilities set to selenium grid");
-					capabilities.setBrowserName("chrome");
-					System.out.println("chrome browser set");
-					capabilities.setPlatform(Platform.WIN10);
-					System.out.println("Win10 set");
-					driver = new RemoteWebDriver(new URL("http://selenium-node-chrome:5555/wd/hub"), capabilities);
-					//driver = new RemoteWebDriver(new URL("http://10.225.216.75:4444/wd/hub"), capabilities);
-					System.out.println("RemoteWebdriver set");
-					//driver.manage().window().maximize();
-					driver.navigate().to(appURL);
-					break;
+              	 ChromeOptions options = new ChromeOptions();
+				 options.setAcceptInsecureCerts(true);
+				 options.setCapability("build", "Testing Chrome Options [Selenium 4]");
+                 options.setCapability("name", "Testing Chrome Options [Selenium 4]");
+                 options.setCapability("browserName", "chrome");
+                
+				 System.out.println("RemoteWebdriver set test");
+					 try {
+                            
+							driver = new RemoteWebDriver(new URL("http://selenium-hub:4444"), options);
+							driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+							driver.manage().window().maximize();
+                         } catch (MalformedURLException e) {
+                                 System.out.println("Invalid grid URL");
+                                  }
+								  driver.navigate().to(appURL);
+								  break;
+
 					
 			}
 		   
 			
 			
 		case "firefox":	
-			  if(osystem.equals("Windows 11"))
+			  if(osystem.equals("Windows 10"))
 			 {
 				//local run
 					System.out.println("Launching mozilla firefox..");
@@ -92,9 +95,9 @@ public class BrowserConfig extends testBase{
 					FirefoxProfile firefoxProfile = new FirefoxProfile();			
 					firefoxProfile.setAcceptUntrustedCertificates(true);
 					firefoxProfile.setPreference("layers.acceleration.disabled", true);
-					DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
-					desiredCapabilities.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
-					driver = new RemoteWebDriver(new URL("http://selenium-node-firefox:5555/wd/hub"), desiredCapabilities);
+			//		DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+			//		desiredCapabilities.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
+			//		driver = new RemoteWebDriver(new URL("http://selenium-hub:4444"), desiredCapabilities);
 					System.out.println("launching firefox driver");
 					System.out.println("RemoteWebdriver set");
 					//driver.manage().window().maximize();
@@ -105,7 +108,7 @@ public class BrowserConfig extends testBase{
 			
 			
 		default:
-			  if(osystem.equals("Windows 11"))
+			  if(osystem.equals("Windows 10"))
 			{
 				//local run
 				ChromeOptions options = new ChromeOptions();
@@ -122,21 +125,24 @@ public class BrowserConfig extends testBase{
 			
 			else
 			{
-				 //Jenkins run on platform
-		           System.out.println("testing chrome through desired capabilities");
-					DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-					System.out.println("capabilities set to selenium grid");
-					capabilities.setBrowserName("chrome");
-					System.out.println("chrome browser set");
-					capabilities.setPlatform(Platform.WIN10);
-					System.out.println("Win10 set");
-					driver = new RemoteWebDriver(new URL("http://selenium-node-chrome:5555/wd/hub"), capabilities);
-					//driver = new RemoteWebDriver(new URL("http://10.225.216.75:4444/wd/hub"), capabilities);
-					System.out.println("RemoteWebdriver set");
-					//driver.manage().window().maximize();
-					driver.navigate().to(appURL);
-					break;
-					
+              	 ChromeOptions options = new ChromeOptions();
+				 options.setAcceptInsecureCerts(true);
+				 options.setCapability("build", "Testing Chrome Options [Selenium 4]");
+                 options.setCapability("name", "Testing Chrome Options [Selenium 4]");
+                 options.setCapability("browserName", "chrome");
+                
+				 System.out.println("RemoteWebdriver set test");
+					 try {
+                            
+							driver = new RemoteWebDriver(new URL("http://selenium-hub:4444"), options);
+			//				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+							driver.manage().window().maximize();
+                         } catch (MalformedURLException e) {
+                                 System.out.println("Invalid grid URL");
+                                  }
+								  driver.navigate().to(appURL);
+								  break;
+
 					
 			}
 		   
@@ -148,4 +154,3 @@ public class BrowserConfig extends testBase{
 
 
 }
-

@@ -46,7 +46,7 @@ public class SSLLABS_AWS extends testBase {
 	@Test(priority = 0, enabled = true)
 	public void SSLUrlSearch() throws InterruptedException, IOException {
 			SslLabs_AWS sslsearch = PageFactory.initElements(driver, SslLabs_AWS.class);
-			boolean flag = sslsearch.searchAllurl(testBase.getSSLURL());
+			boolean flag = sslsearch.searchAllurl(testBase.getScanurl());
 			Assert.assertTrue(flag);
 	}
 

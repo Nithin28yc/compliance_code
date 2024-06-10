@@ -45,13 +45,12 @@ import compliance.Functional.DataMasking;
 import compliance.Functional.DataMinimization;
 import compliance.Functional.DataRetention;
 import compliance.Functional.PasswordComplexity;
-import compliance.Functional.PasswordComplexity_keycloak;
 import compliance.Functional.PasswordHistoryPolicy;
 import compliance.Functional.PrivilegedAccessManagement;
 import compliance.Functional.PurposeLimitation;
 import compliance.Functional.DataTransferPolicy;
-import compliance.Functional.ErrorHandlingInvalidParameter;
 import compliance.Functional.LeastPrivilege;
+import compliance.Functional.ErrorHandlingInvalidParameter;
 import compliance.Functional.LegalContractual;
 import compliance.Functional.LoggingMonitoring;
 import compliance.Functional.SSLLABS_AWS;
@@ -61,8 +60,6 @@ import compliance.Functional.SessionManagement;
 import compliance.Functional.SingleSignOn;
 import compliance.Functional.TestingMFA;
 import compliance.Functional.VerifyPasswordEncryption;
-import compliance.Functional.UnrestrictedLength;
-import compliance.Functional.UserAccessManagement;
 import compliance.Functional.VerifyLogs;
 import compliance.Functional.NoticePrivacy;
 import compliance.Functional.roleBasedAccess;
@@ -463,7 +460,7 @@ public class testBase implements ISuiteListener {
 			Thread.sleep(5000);// added by poojitha
 			osystem = System.getProperty("os.name");
 			System.out.println("Op System: " + osystem);
-			if (osystem.equals("Windows 10")) {
+			if (osystem.equals("Windows 11")) {
 				// local run
 				String current = System.getProperty("user.dir");
 				System.out.println("User directory is: " + current);
@@ -550,15 +547,11 @@ public class testBase implements ISuiteListener {
 			logger = extent.startTest(testName);
 		}*/
 
-		 if (UnrestrictedLength.classname) {
-			logger = extent.startTest(testName);
-		} 
-		 else if (PasswordComplexity.classname) {
+
+		 if (PasswordComplexity.classname) {
 			 logger = extent.startTest(testName);
 		 }
-		 else if (PasswordComplexity_keycloak.classname) {
-			 logger = extent.startTest(testName);
-		 }
+
 		 else if (DataTransferPolicy.classname) {
 			 logger = extent.startTest(testName);
 		 }
@@ -596,9 +589,6 @@ public class testBase implements ISuiteListener {
 			 logger = extent.startTest(testName);
 		 }
 		 else if (SessionExpire.classname) {
-			 logger = extent.startTest(testName);
-		 }
-		 else if (UserAccessManagement.classname) {
 			 logger = extent.startTest(testName);
 		 }
 		 else if (VerifyPasswordEncryption.classname) {
@@ -652,7 +642,7 @@ public class testBase implements ISuiteListener {
 		 else if (LeastPrivilege.classname) {
 			 logger = extent.startTest(testName);
 		 }
-		 else if (ErrorHandlingInvalidParameter.classname) {
+      	 else if (ErrorHandlingInvalidParameter.classname) {
 			 logger = extent.startTest(testName);
 		 }
 	}
@@ -662,7 +652,7 @@ public class testBase implements ISuiteListener {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			logger.log(LogStatus.FAIL, "Test Case Failed: " + result.getName());
 //			logger.log(LogStatus.FAIL, "Test Case Failed: " + result.getThrowable());
-			String screenshotPath = Screenhshot.getScreenshot(result.getName(),srptpath);
+			String screenshotPath = Screenshot.getScreenshot(result.getName(), srptpath);
 //			//To add it in the extent report 
            logger.log(LogStatus.INFO,logger.addScreenCapture(screenshotPath));
          
@@ -672,7 +662,7 @@ public class testBase implements ISuiteListener {
 		// }
 		else if (result.getStatus() == ITestResult.SUCCESS) {
 			logger.log(LogStatus.PASS, "Test Case Passed: " + result.getName());
-			String screenshotPath = Screenhshot.getScreenshot(result.getName(),srptpath);
+			String screenshotPath = Screenshot.getScreenshot(result.getName(),srptpath);
 			logger.log(LogStatus.INFO,logger.addScreenCapture(screenshotPath));
 		}
 		// ending test

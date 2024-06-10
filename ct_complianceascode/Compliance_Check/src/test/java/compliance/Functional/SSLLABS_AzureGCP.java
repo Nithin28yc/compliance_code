@@ -47,7 +47,7 @@ public class SSLLABS_AzureGCP extends testBase {
 	@Test(priority = 0, enabled = true)
 	public void SSLUrlSearch() throws InterruptedException, IOException {
 			SslLabs_AzureGCP sslsearch = PageFactory.initElements(driver, SslLabs_AzureGCP.class);
-			boolean flag = sslsearch.searchAllurl(testBase.getSSLURL());
+			boolean flag = sslsearch.searchAllurl(testBase.getScanurl());
 			Assert.assertTrue(flag);
 	}
 

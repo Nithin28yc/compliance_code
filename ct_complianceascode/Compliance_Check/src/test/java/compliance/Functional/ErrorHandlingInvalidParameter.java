@@ -41,7 +41,7 @@ public class ErrorHandlingInvalidParameter extends testBase{
 	}
 
 	@Test( priority = 0, enabled = true)
-	public void ErrorHandling_InvalidParameterCheck() throws InterruptedException, IOException {
+	public void invalidParameterCheck() throws InterruptedException, IOException {
 		CommonMethods commonMethods = PageFactory.initElements(driver, CommonMethods.class);
 		ErrorHandling_InvalidParameter login = PageFactory.initElements(driver, ErrorHandling_InvalidParameter.class);
 		//login.ngnixLogin(testBase.getUsername(), testBase.getPassword());
